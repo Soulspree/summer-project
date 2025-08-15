@@ -12,7 +12,7 @@ require_once __DIR__ . '/Database.php';
 
 class Payment extends Database {
     
-    // Payment status constants
+   // Payment status constants
     const STATUS_PENDING = 'pending';
     const STATUS_PAID = 'paid';
     const STATUS_FAILED = 'failed';
@@ -37,35 +37,47 @@ class Payment extends Database {
     
     private $table = 'payments';
     private $errors = [];
+
+    public function __construct() {
+        parent::__construct('payments', 'payment_id');
+    }
     
     /**
      * Create a new payment record
      * 
+     * Create a new payment record with detailed payment data
+     *
      * @param array $paymentData Payment information
      * @return array Result with status and payment_id or errors
      */
     public function createPayment($paymentData) {
+    public function createPaymentRecord($paymentData) {
         $this->clearErrors();
         
+
         // Validate required fields
         $requiredFields = ['booking_id', 'amount', 'payment_type', 'payment_method'];
         if (!$this->validateRequiredFields($paymentData, $requiredFields)) {
             return $this->returnError('Missing required payment fields');
         }
         
+
         // Validate payment data
         if (!$this->validatePaymentData($paymentData)) {
             return $this->returnError('Invalid payment data', $this->errors);
         }
         
+
         // Check if booking exists
         if (!$this->bookingExists($paymentData['booking_id'])) {
             return $this->returnError('Booking not found');
         }
         
+
         try {
             $this->beginTransaction();
             
+
             // Prepare payment data
             $data = [
                 'booking_id' => $paymentData['booking_id'],
@@ -84,20 +96,27 @@ class Payment extends Database {
             
             $paymentId = $this->create($this->table, $data);
             
+
+            $paymentId = $this->create($data);
+
             if (!$paymentId) {
                 throw new Exception('Failed to create payment record');
             }
             
+
             // Update booking payment status if payment is completed
             if ($data['payment_status'] === self::STATUS_PAID) {
                 $this->updateBookingPaymentStatus($paymentData['booking_id']);
             }
             
+
             // Log activity
             $this->logPaymentActivity($paymentId, 'payment_created', $data['amount']);
             
+
             $this->commit();
             
+
             return [
                 'success' => true,
                 'message' => 'Payment record created successfully',
@@ -105,8 +124,48 @@ class Payment extends Database {
                 'reference_number' => $data['reference_number']
             ];
             
+
         } catch (Exception $e) {
             $this->rollback();
+            return $this->returnError('Failed to create payment: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Create a basic payment entry
+     *
+     * @param int $booking_id Booking ID
+     * @param float $amount Payment amount
+     * @param string $status Payment status
+     * @return array Result with success status and payment ID or error
+     */
+    public function createPayment($booking_id, $amount, $status = self::STATUS_PENDING) {
+        $this->clearErrors();
+
+        // Basic validation
+        if (empty($booking_id) || !is_numeric($amount) || $amount <= 0) {
+            return $this->returnError('Invalid payment parameters');
+        }
+
+        $data = [
+            'booking_id' => $booking_id,
+            'amount' => $amount,
+            'payment_status' => $status,
+            'payment_date' => date('Y-m-d H:i:s'),
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+
+        try {
+            $paymentId = $this->create($data);
+            if (!$paymentId) {
+                throw new Exception('Failed to create payment');
+            }
+
+            return [
+                'success' => true,
+                'payment_id' => $paymentId
+            ];
+        } catch (Exception $e) {
             return $this->returnError('Failed to create payment: ' . $e->getMessage());
         }
     }
@@ -146,6 +205,7 @@ class Payment extends Database {
             }
             
             $updated = $this->update($this->table, $updateData, ['payment_id' => $paymentId]);
+            $updated = $this->update($paymentId, $updateData);
             
             if (!$updated) {
                 throw new Exception('Failed to update payment status');
@@ -168,6 +228,17 @@ class Payment extends Database {
             $this->rollback();
             return $this->returnError('Failed to update payment status: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Update payment status using simplified parameters
+     *
+     * @param int $payment_id Payment ID
+     * @param string $status New status
+     * @return array Result with success status
+     */
+    public function updateStatus($payment_id, $status) {
+        return $this->updatePaymentStatus($payment_id, $status);
     }
     
     /**
@@ -194,60 +265,6 @@ class Payment extends Database {
                 WHERE p.payment_id = ?
             ";
             
-            $payment = $this->query($query, [$paymentId])->fetch();
-            
-            if (!$payment) {
-                return $this->returnError('Payment not found');
-            }
-            
-            return [
-                'success' => true,
-                'data' => $payment
-            ];
-            
-        } catch (Exception $e) {
-            return $this->returnError('Failed to retrieve payment: ' . $e->getMessage());
-        }
-    }
-    
-    /**
-     * Get payments by booking ID
-     * 
-     * @param int $bookingId Booking ID
-     * @return array List of payments
-     */
-    public function getPaymentsByBooking($bookingId) {
-        $this->clearErrors();
-        
-        try {
-            $query = "
-                SELECT * FROM {$this->table}
-                WHERE booking_id = ?
-                ORDER BY created_at DESC
-            ";
-            
-            $payments = $this->query($query, [$bookingId])->fetchAll();
-            
-            return [
-                'success' => true,
-                'data' => $payments,
-                'total' => count($payments)
-            ];
-            
-        } catch (Exception $e) {
-            return $this->returnError('Failed to retrieve payments: ' . $e->getMessage());
-        }
-    }
-    
-    /**
-     * Get payments for a musician with filtering and pagination
-     * 
-     * @param int $musicianId Musician ID
-     * @param array $filters Filtering options
-     * @param int $page Page number
-     * @param int $limit Items per page
-     * @return array Paginated payments data
-     */
     public function getMusicianPayments($musicianId, $filters = [], $page = 1, $limit = 20) {
         $this->clearErrors();
         

@@ -60,28 +60,7 @@ function requireAdminAuth() {
     }
 }
 
-/**
- * Redirect authenticated users away from auth pages
- */
-function redirectIfAuthenticated() {
-    if (isLoggedIn()) {
-        redirectToDashboard();
-    }
-}
 
-/**
- * Check CSRF token for POST requests
- */
-function checkCSRF() {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $token = $_POST['csrf_token'] ?? '';
-        if (!verifyCSRFToken($token)) {
-            setFlashMessage('error', 'Security token expired. Please try again.');
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-            exit;
-        }
-    }
-}
 
 /**
  * Initialize session timeout check
