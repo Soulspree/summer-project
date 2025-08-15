@@ -99,7 +99,7 @@ if (isset($_GET['error'])) {
         }
         .form-control:focus {
             border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
         }
         .btn-login {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -286,6 +286,25 @@ if (isset($_GET['error'])) {
             const form = document.querySelector('form');
             const emailInput = document.getElementById('email');
             const passwordInput = document.getElementById('password');
+            emailInput.addEventListener('input', function() {
+                if (!emailInput.value.trim()) {
+                    showError(emailInput, 'Email is required');
+                } else if (!isValidEmail(emailInput.value)) {
+                    showError(emailInput, 'Please enter a valid email address');
+                } else {
+                    clearError(emailInput);
+                }
+            });
+
+            passwordInput.addEventListener('input', function() {
+                if (!passwordInput.value.trim()) {
+                    showError(passwordInput, 'Password is required');
+                } else if (passwordInput.value.length < 8) {
+                    showError(passwordInput, 'Password must be at least 8 characters long');
+                } else {
+                    clearError(passwordInput);
+                }
+            });
             
             form.addEventListener('submit', function(e) {
                 let isValid = true;
@@ -323,7 +342,14 @@ if (isset($_GET['error'])) {
                     errorDiv.textContent = message;
                 }
             }
-            
+             function clearError(input) {
+                input.classList.remove('is-invalid');
+                const errorDiv = document.getElementById(input.name + '-error');
+                if (errorDiv) {
+                    errorDiv.textContent = '';
+                }
+            }
+
             function isValidEmail(email) {
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return emailRegex.test(email);

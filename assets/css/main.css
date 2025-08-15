@@ -1,0 +1,102 @@
+/**
+ * Spacing utilities
+ * BEM: utility prefix `u-`
+ */
+.u-m-0 {
+  margin: 0 !important;
+}
+
+.u-mt-sm {
+  margin-top: 0.5rem !important;
+}
+
+.u-mt-md {
+  margin-top: 1rem !important;
+}
+
+.u-mt-lg {
+  margin-top: 2rem !important;
+}
+
+.u-mb-sm {
+  margin-bottom: 0.5rem !important;
+}
+
+.u-mb-md {
+  margin-bottom: 1rem !important;
+}
+
+.u-mb-lg {
+  margin-bottom: 2rem !important;
+}
+
+.u-p-sm {
+  padding: 0.5rem !important;
+}
+
+.u-p-md {
+  padding: 1rem !important;
+}
+
+.u-p-lg {
+  padding: 2rem !important;
+}
+
+/**
+ * Typography utilities
+ */
+.u-font-sm {
+  font-size: 0.875rem !important;
+}
+
+.u-font-md {
+  font-size: 1rem !important;
+}
+
+.u-font-lg {
+  font-size: 1.25rem !important;
+}
+
+.u-font-bold {
+  font-weight: 700 !important;
+}
+
+/**
+ * Alignment utilities
+ */
+.u-text-left {
+  text-align: left !important;
+}
+
+.u-text-center {
+  text-align: center !important;
+}
+
+.u-text-right {
+  text-align: right !important;
+}
+
+.u-flex-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/**
+ * Card component
+ */
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.card__header {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+.card__body {
+  padding: 1rem;
+}
+.card--highlighted {
+  border-color: #007bff;
+}

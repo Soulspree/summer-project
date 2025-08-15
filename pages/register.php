@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         .form-control:focus {
             border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
         }
         .btn-register {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -470,79 +470,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Form validation
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('form');
-            
+            const firstName = document.getElementById('first_name');
+            const lastName = document.getElementById('last_name');
+            const username = document.getElementById('username');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm_password');
+            const terms = document.getElementById('terms');
+
+            [firstName, lastName, username, email, password, confirmPassword].forEach(input => {
+                input.addEventListener('input', () => validateField(input));
+            });
+
+            document.querySelectorAll('input[name="user_type"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    document.querySelectorAll('.user-type-card').forEach(card => card.classList.remove('is-invalid'));
+                });
+            });
+
+            terms.addEventListener('change', () => validateField(terms));
+
             form.addEventListener('submit', function(e) {
                 let isValid = true;
                 
-                // Clear previous errors
-                document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
                 
-                // Validate first name
-                const firstName = document.getElementById('first_name');
-                if (!firstName.value.trim()) {
-                    showError(firstName, 'First name is required');
-                    isValid = false;
-                }
-                
-                // Validate last name
-                const lastName = document.getElementById('last_name');
-                if (!lastName.value.trim()) {
-                    showError(lastName, 'Last name is required');
-                    isValid = false;
-                }
-                
-                // Validate username
-                const username = document.getElementById('username');
-                if (!username.value.trim()) {
-                    showError(username, 'Username is required');
-                    isValid = false;
-                } else if (username.value.length < 3) {
-                    showError(username, 'Username must be at least 3 characters');
-                    isValid = false;
-                } else if (!/^[a-zA-Z0-9_-]+$/.test(username.value)) {
-                    showError(username, 'Username can only contain letters, numbers, underscore and hyphens');
-                    isValid = false;
-                }
-                
-                // Validate email
-                const email = document.getElementById('email');
-                if (!email.value.trim()) {
-                    showError(email, 'Email is required');
-                    isValid = false;
-                } else if (!isValidEmail(email.value)) {
-                    showError(email, 'Please enter a valid email address');
-                    isValid = false;
-                }
                 
                 // Validate user type
+                [firstName, lastName, username, email, password, confirmPassword, terms].forEach(input => {
+                    validateField(input);
+                    if (input.classList.contains('is-invalid')) {
+                        isValid = false;
+                    }
+                });
+
                 const userType = document.querySelector('input[name="user_type"]:checked');
                 if (!userType) {
                     showError(document.querySelector('.user-type-card'), 'Please select account type');
                     isValid = false;
                 }
                 
-                // Validate password
-                const password = document.getElementById('password');
-                if (!password.value.trim()) {
-                    showError(password, 'Password is required');
-                    isValid = false;
-                } else {
-                    const { strength } = checkPasswordStrength(password.value);
-                    if (strength < 2) {
-                        showError(password, 'Password is too weak');
-                        isValid = false;
-                    }
-                }
-                
-                // Validate confirm password
-                const confirmPassword = document.getElementById('confirm_password');
-                if (!confirmPassword.value.trim()) {
-                    showError(confirmPassword, 'Please confirm your password');
-                    isValid = false;
-                } else if (password.value !== confirmPassword.value) {
-                    showError(confirmPassword, 'Passwords do not match');
-                    isValid = false;
-                }
                 
                 // Validate terms
                 const terms = document.getElementById('terms');
@@ -555,7 +521,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     e.preventDefault();
                 }
             });
-            
+            function validateField(input) {
+                switch (input.id) {
+                    case 'first_name':
+                        if (!input.value.trim()) {
+                            showError(input, 'First name is required');
+                        } else {
+                            clearError(input);
+                        }
+                        break;
+                    case 'last_name':
+                        if (!input.value.trim()) {
+                            showError(input, 'Last name is required');
+                        } else {
+                            clearError(input);
+                        }
+                        break;
+                    case 'username':
+                        if (!input.value.trim()) {
+                            showError(input, 'Username is required');
+                        } else if (input.value.length < 3) {
+                            showError(input, 'Username must be at least 3 characters');
+                        } else if (!/^[a-zA-Z0-9_-]+$/.test(input.value)) {
+                            showError(input, 'Username can only contain letters, numbers, underscore and hyphens');
+                        } else {
+                            clearError(input);
+                        }
+                        break;
+                    case 'email':
+                        if (!input.value.trim()) {
+                            showError(input, 'Email is required');
+                        } else if (!isValidEmail(input.value)) {
+                            showError(input, 'Please enter a valid email address');
+                        } else {
+                            clearError(input);
+                        }
+                        break;
+                    case 'password':
+                        if (!input.value.trim()) {
+                            showError(input, 'Password is required');
+                        } else {
+                            const { strength } = checkPasswordStrength(input.value);
+                            if (strength < 2) {
+                                showError(input, 'Password is too weak');
+                            } else {
+                                clearError(input);
+                            }
+                        }
+                        break;
+                    case 'confirm_password':
+                        const passwordEl = document.getElementById('password');
+                        if (!input.value.trim()) {
+                            showError(input, 'Please confirm your password');
+                        } else if (passwordEl.value !== input.value) {
+                            showError(input, 'Passwords do not match');
+                        } else {
+                            clearError(input);
+                        }
+                        break;
+                    case 'terms':
+                        if (!input.checked) {
+                            showError(input, 'You must accept the terms and conditions');
+                        } else {
+                            clearError(input);
+                        }
+                        break;
+                }
+            }
+
             function showError(input, message) {
                 input.classList.add('is-invalid');
                 const errorDiv = document.getElementById(input.name + '-error');
@@ -564,6 +597,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             
+            function clearError(input) {
+                input.classList.remove('is-invalid');
+                const errorDiv = document.getElementById(input.name + '-error');
+                if (errorDiv) {
+                    errorDiv.textContent = '';
+                }
+            }
             function isValidEmail(email) {
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return emailRegex.test(email);

@@ -1,0 +1,11 @@
+/**
+ * Alignment utilities
+ */
+.u-text-left { text-align: left !important; }
+.u-text-center { text-align: center !important; }
+.u-text-right { text-align: right !important; }
+
+.u-flex-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;

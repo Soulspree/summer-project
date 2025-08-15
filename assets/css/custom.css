@@ -1,1 +1,40 @@
- 
+/* Accessibility and high-contrast styles */
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link {
+  color: #ffffff;
+}
+
+.navbar-dark .nav-link:focus,
+.navbar-dark .nav-link:hover {
+  color: #ffbf47;
+}
+
+.nav-link:focus,
+.btn:focus {
+  outline: 0.2rem solid #ffbf47;
+  outline-offset: 0.125rem;
+}
+
+/* High contrast button styles */
+.btn-primary {
+  background-color: #005bcc;
+  border-color: #005bcc;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #00429d;
+  border-color: #00429d;
+}
+
+.btn-light {
+  color: #000;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.btn-light:hover,
+.btn-light:focus {
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
+}

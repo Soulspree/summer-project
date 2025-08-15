@@ -3,6 +3,13 @@
  * Homepage - Musician Booking System
  * Modern landing page for both musicians and clients
  */
+// Include configuration and classes
+require_once __DIR__ . '/config/config.php';
+require_once __DIR__ . '/classes/Gig.php';
+
+$gigObj = new Gig();
+$featuredGigs = $gigObj->getPublicUpcomingGigs(5);
+
 
 // Include header
 include_once 'includes/header.php';
@@ -13,15 +20,15 @@ include_once 'includes/header.php';
     <div class="hero-background"></div>
     <div class="hero-overlay"></div>
     <div class="container position-relative py-5">
-        <div class="row align-items-center min-vh-75">
+        <div class="row align-items-center min-vh-100">
             <div class="col-lg-6 mb-5 mb-lg-0">
-                <div class="hero-content animate-fade-up">
-                    <h1 class="display-3 fw-bold text-white mb-4 hero-title">
+                <div class="hero-content animate-fade-up text-center text-lg-start">
+                    <h1 class="display-2 fw-bold text-white mb-4 hero-title">
                         Connect Musicians <br>
                         <span class="text-gradient">with Events</span>
                     </h1>
                     <p class="lead text-light mb-4 fs-5">
-                        Nepal's premier platform for booking talented musicians. 
+                        Nepal's premier platform for booking talented musicians.
                         Find the perfect artist for weddings, concerts, parties, and corporate events.
                     </p>
                     <div class="hero-stats mb-4">
@@ -46,11 +53,11 @@ include_once 'includes/header.php';
                             </div>
                         </div>
                     </div>
-                    <div class="hero-buttons d-flex gap-3 flex-wrap">
-                        <a href="?page=register" class="btn btn-primary btn-lg px-4 py-3 rounded-pill hover-lift">
+                    <div class="hero-buttons d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+                        <a href="?page=register" class="btn btn-neon btn-neon-cyan btn-lg px-4 py-3 rounded-pill hover-lift">
                             <i class="fas fa-rocket me-2"></i>Get Started
                         </a>
-                        <a href="?page=search" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill hover-lift">
+                        <a href="?page=search" class="btn btn-neon btn-neon-pink btn-lg px-4 py-3 rounded-pill hover-lift">
                             <i class="fas fa-search me-2"></i>Find Musicians
                         </a>
                     </div>
@@ -76,299 +83,7 @@ include_once 'includes/header.php';
                                 </div>
                                 <div>
                                     <h6 class="mb-0 fw-bold">Featured Artist</h6>
-                                    <small class="text-muted">Available for booking</small>
-                                </div>
-                            </div>
-                            <div class="rating mb-2">
-                                <span class="text-warning">★★★★★</span>
-                                <small class="text-muted ms-2">4.9 (127 reviews)</small>
-                            </div>
-                            <div class="price-tag">
-                                <span class="h5 text-success mb-0">Rs. 15,000</span>
-                                <small class="text-muted">/event</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Floating Elements -->
-    <div class="floating-elements">
-        <div class="floating-note note-1">♪</div>
-        <div class="floating-note note-2">♫</div>
-        <div class="floating-note note-3">♪</div>
-        <div class="floating-note note-4">♬</div>
-    </div>
-</div>
-
-<!-- Features Section -->
-<section class="features-section py-5">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <div class="section-header animate-on-scroll">
-                    <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill mb-3">Why Choose Us</span>
-                    <h2 class="display-5 fw-bold mb-4">Everything you need in one platform</h2>
-                    <p class="lead text-muted col-lg-8 mx-auto">
-                        We've built the most comprehensive platform for musicians and event organizers in Nepal
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-card h-100 p-4 rounded-4 border-0 shadow-sm hover-lift animate-on-scroll">
-                    <div class="feature-icon mb-4">
-                        <div class="icon-wrapper bg-primary-subtle text-primary rounded-3 p-3 d-inline-flex">
-                            <i class="fas fa-search fa-2x"></i>
-                        </div>
-                    </div>
-                    <h4 class="fw-bold mb-3">Smart Discovery</h4>
-                    <p class="text-muted mb-4">Advanced search with filters for genre, location, price, and availability. Find your perfect musical match instantly.</p>
-                    <ul class="feature-list list-unstyled">
-                        <li><i class="fas fa-check text-success me-2"></i>Genre-based filtering</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Location proximity</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Price range selection</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-card h-100 p-4 rounded-4 border-0 shadow-sm hover-lift animate-on-scroll">
-                    <div class="feature-icon mb-4">
-                        <div class="icon-wrapper bg-success-subtle text-success rounded-3 p-3 d-inline-flex">
-                            <i class="fas fa-calendar-alt fa-2x"></i>
-                        </div>
-                    </div>
-                    <h4 class="fw-bold mb-3">Instant Booking</h4>
-                    <p class="text-muted mb-4">Real-time availability checking and instant booking confirmation. Manage all your events in one dashboard.</p>
-                    <ul class="feature-list list-unstyled">
-                        <li><i class="fas fa-check text-success me-2"></i>Real-time availability</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Instant confirmation</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Event management</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mx-auto">
-                <div class="feature-card h-100 p-4 rounded-4 border-0 shadow-sm hover-lift animate-on-scroll">
-                    <div class="feature-icon mb-4">
-                        <div class="icon-wrapper bg-info-subtle text-info rounded-3 p-3 d-inline-flex">
-                            <i class="fas fa-shield-alt fa-2x"></i>
-                        </div>
-                    </div>
-                    <h4 class="fw-bold mb-3">Secure & Trusted</h4>
-                    <p class="text-muted mb-4">Verified profiles, secure payments, and transparent pricing. Your bookings are protected with our guarantee.</p>
-                    <ul class="feature-list list-unstyled">
-                        <li><i class="fas fa-check text-success me-2"></i>Verified musicians</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Secure payments</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Booking guarantee</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- User Types Section with Modern Cards -->
-<section class="user-types-section py-5 bg-light">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <div class="section-header animate-on-scroll">
-                    <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill mb-3">Join Today</span>
-                    <h2 class="display-5 fw-bold mb-4">Choose Your Path</h2>
-                    <p class="lead text-muted">Whether you're a musician or event organizer, we have the perfect solution for you</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row g-4 justify-content-center">
-            <div class="col-lg-5 col-md-6">
-                <div class="user-type-card musician-card h-100 rounded-4 overflow-hidden shadow-lg animate-on-scroll">
-                    <div class="card-gradient musician-gradient"></div>
-                    <div class="card-content p-5 text-white position-relative">
-                        <div class="card-icon mb-4">
-                            <i class="fas fa-music fa-3x"></i>
-                        </div>
-                        <h3 class="fw-bold mb-3">For Musicians</h3>
-                        <p class="mb-4 opacity-90">Showcase your talent, manage bookings, and grow your music career with our comprehensive platform.</p>
-                        
-                        <div class="benefits-list mb-4">
-                            <div class="benefit-item d-flex align-items-center mb-3">
-                                <div class="benefit-icon bg-white bg-opacity-25 rounded-circle p-2 me-3">
-                                    <i class="fas fa-user-circle text-white"></i>
-                                </div>
-                                <span>Professional profile creation</span>
-                            </div>
-                            <div class="benefit-item d-flex align-items-center mb-3">
-                                <div class="benefit-icon bg-white bg-opacity-25 rounded-circle p-2 me-3">
-                                    <i class="fas fa-calendar text-white"></i>
-                                </div>
-                                <span>Smart calendar management</span>
-                            </div>
-                            <div class="benefit-item d-flex align-items-center mb-3">
-                                <div class="benefit-icon bg-white bg-opacity-25 rounded-circle p-2 me-3">
-                                    <i class="fas fa-chart-line text-white"></i>
-                                </div>
-                                <span>Earnings analytics</span>
-                            </div>
-                        </div>
-                        
-                        <a href="?page=register&type=musician" class="btn btn-light btn-lg rounded-pill px-4 hover-lift">
-                            <i class="fas fa-music me-2"></i>Join as Musician
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-5 col-md-6">
-                <div class="user-type-card client-card h-100 rounded-4 overflow-hidden shadow-lg animate-on-scroll">
-                    <div class="card-gradient client-gradient"></div>
-                    <div class="card-content p-5 text-white position-relative">
-                        <div class="card-icon mb-4">
-                            <i class="fas fa-calendar-check fa-3x"></i>
-                        </div>
-                        <h3 class="fw-bold mb-3">For Event Organizers</h3>
-                        <p class="mb-4 opacity-90">Find and book perfect musicians for your events. From weddings to corporate events, we've got you covered.</p>
-                        
-                        <div class="benefits-list mb-4">
-                            <div class="benefit-item d-flex align-items-center mb-3">
-                                <div class="benefit-icon bg-white bg-opacity-25 rounded-circle p-2 me-3">
-                                    <i class="fas fa-search text-white"></i>
-                                </div>
-                                <span>Advanced musician discovery</span>
-                            </div>
-                            <div class="benefit-item d-flex align-items-center mb-3">
-                                <div class="benefit-icon bg-white bg-opacity-25 rounded-circle p-2 me-3">
-                                    <i class="fas fa-bolt text-white"></i>
-                                </div>
-                                <span>Instant booking confirmation</span>
-                            </div>
-                            <div class="benefit-item d-flex align-items-center mb-3">
-                                <div class="benefit-icon bg-white bg-opacity-25 rounded-circle p-2 me-3">
-                                    <i class="fas fa-star text-white"></i>
-                                </div>
-                                <span>Review and rating system</span>
-                            </div>
-                        </div>
-                        
-                        <a href="?page=register&type=client" class="btn btn-light btn-lg rounded-pill px-4 hover-lift">
-                            <i class="fas fa-calendar-plus me-2"></i>Join as Client
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Testimonials Section -->
-<section class="testimonials-section py-5">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <div class="section-header animate-on-scroll">
-                    <span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill mb-3">Success Stories</span>
-                    <h2 class="display-5 fw-bold mb-4">What Our Community Says</h2>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <div class="testimonial-card bg-white rounded-4 p-4 shadow-sm h-100 animate-on-scroll">
-                    <div class="testimonial-rating mb-3">
-                        <span class="text-warning fs-5">★★★★★</span>
-                    </div>
-                    <p class="testimonial-text mb-4">"This platform revolutionized how I manage my music bookings. I've tripled my monthly gigs and the payment tracking is fantastic!"</p>
-                    <div class="testimonial-author d-flex align-items-center">
-                        <div class="author-avatar bg-primary rounded-circle me-3" style="width: 50px; height: 50px;">
-                            <i class="fas fa-user text-white" style="line-height: 50px;"></i>
-                        </div>
-                        <div>
-                            <h6 class="mb-0 fw-bold">Ramesh Maharjan</h6>
-                            <small class="text-muted">Folk Musician, Kathmandu</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4">
-                <div class="testimonial-card bg-white rounded-4 p-4 shadow-sm h-100 animate-on-scroll">
-                    <div class="testimonial-rating mb-3">
-                        <span class="text-warning fs-5">★★★★★</span>
-                    </div>
-                    <p class="testimonial-text mb-4">"Found the perfect band for our wedding in just minutes. The booking process was seamless and the musicians were incredible!"</p>
-                    <div class="testimonial-author d-flex align-items-center">
-                        <div class="author-avatar bg-success rounded-circle me-3" style="width: 50px; height: 50px;">
-                            <i class="fas fa-user text-white" style="line-height: 50px;"></i>
-                        </div>
-                        <div>
-                            <h6 class="mb-0 fw-bold">Priya Shrestha</h6>
-                            <small class="text-muted">Event Organizer, Lalitpur</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4">
-                <div class="testimonial-card bg-white rounded-4 p-4 shadow-sm h-100 animate-on-scroll">
-                    <div class="testimonial-rating mb-3">
-                        <span class="text-warning fs-5">★★★★★</span>
-                    </div>
-                    <p class="testimonial-text mb-4">"As a corporate event planner, this platform saves me hours of research. The verified profiles give me confidence in every booking."</p>
-                    <div class="testimonial-author d-flex align-items-center">
-                        <div class="author-avatar bg-info rounded-circle me-3" style="width: 50px; height: 50px;">
-                            <i class="fas fa-user text-white" style="line-height: 50px;"></i>
-                        </div>
-                        <div>
-                            <h6 class="mb-0 fw-bold">Anil Gurung</h6>
-                            <small class="text-muted">Corporate Planner, Pokhara</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Section -->
-<section class="cta-section py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="cta-card bg-gradient rounded-4 p-5 text-center text-white position-relative overflow-hidden animate-on-scroll">
-                    <div class="cta-background"></div>
-                    <div class="position-relative">
-                        <h2 class="display-4 fw-bold mb-4">Ready to Make Music Happen?</h2>
-                        <p class="lead mb-5 col-lg-8 mx-auto opacity-90">
-                            Join Nepal's fastest-growing music community. Whether you're booking your dream event or building your music career, we're here to help you succeed.
-                        </p>
-                        <div class="cta-buttons d-flex gap-3 justify-content-center flex-wrap">
-                            <a href="?page=register" class="btn btn-light btn-lg px-5 py-3 rounded-pill hover-lift">
-                                <i class="fas fa-star me-2"></i>Start Your Journey
-                            </a>
-                            <a href="?page=search" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill hover-lift">
-                                <i class="fas fa-play me-2"></i>Explore Musicians
-                            </a>
-                        </div>
-                        <div class="cta-stats mt-5 row g-4">
-                            <div class="col-md-3 col-6">
-                                <div class="stat-item">
-                                    <div class="stat-number display-6 fw-bold">150+</div>
-                                    <div class="stat-label">Musicians</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <div class="stat-item">
-                                    <div class="stat-number display-6 fw-bold">500+</div>
-                                    <div class="stat-label">Events</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-6">
+@@ -372,159 +372,202 @@ include_once 'includes/header.php';
                                 <div class="stat-item">
                                     <div class="stat-number display-6 fw-bold">25+</div>
                                     <div class="stat-label">Genres</div>
@@ -387,6 +102,46 @@ include_once 'includes/header.php';
         </div>
     </div>
 </section>
+<?php if (!empty($featuredGigs)): ?>
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Upcoming Events</h2>
+        <div id="gigCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <?php foreach ($featuredGigs as $index => $gig): ?>
+                <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title mb-1"><?= htmlspecialchars($gig['title']) ?></h5>
+                            <p class="mb-1 small text-muted">
+                                <?= htmlspecialchars($gig['gig_date']) ?> at <?= htmlspecialchars($gig['venue_name']) ?>
+                            </p>
+                            <p class="mb-3">By <?= htmlspecialchars($gig['musician_name']) ?></p>
+                            <a href="/client/book-musician.php?musician_id=<?= $gig['musician_id'] ?>" class="btn btn-primary btn-sm">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#gigCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#gigCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+<?php else: ?>
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Upcoming Events</h2>
+        <p class="text-center mb-0">No upcoming gigs at the moment.</p>
+    </div>
+</section>
+<?php endif; ?>
 
 <!-- Custom CSS for Landing Page -->
 <style>
@@ -394,7 +149,7 @@ include_once 'includes/header.php';
 .hero-section {
     min-height: 100vh;
     position: relative;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
 }
 
 .hero-background {
@@ -403,7 +158,29 @@ include_once 'includes/header.php';
     left: 0;
     right: 0;
     bottom: 0;
+    overflow: hidden;
+}
+
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="music" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23music)"/></svg>');
+    opacity: 0.2;
+}
+
+.hero-background::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(0,255,255,0.15), transparent 60%);
+    animation: glow 8s linear infinite;
 }
 
 .hero-overlay {
@@ -412,7 +189,7 @@ include_once 'includes/header.php';
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.6);
 }
 
 .text-gradient {
@@ -421,9 +198,6 @@ include_once 'includes/header.php';
     -webkit-text-fill-color: transparent;
 }
 
-.min-vh-75 {
-    min-height: 75vh;
-}
 
 /* Floating Animation */
 .floating-card {
@@ -461,6 +235,11 @@ include_once 'includes/header.php';
 @keyframes wave {
     0%, 100% { height: 20px; }
     50% { height: 40px; }
+}
+
+@keyframes glow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* Floating Music Notes */
@@ -503,6 +282,26 @@ include_once 'includes/header.php';
     box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
 }
 
+/* Neon Buttons */
+.btn-neon {
+    position: relative;
+    background: transparent;
+    color: #fff;
+    border: 2px solid var(--neon-color);
+    text-shadow: 0 0 5px var(--neon-color);
+    box-shadow: 0 0 5px var(--neon-color), 0 0 15px var(--neon-color) inset;
+    transition: all 0.3s ease;
+}
+
+.btn-neon:hover {
+    color: #000;
+    background: var(--neon-color);
+    box-shadow: 0 0 20px var(--neon-color), 0 0 40px var(--neon-color);
+}
+
+.btn-neon-cyan { --neon-color: #00fff5; }
+.btn-neon-pink { --neon-color: #ff00e6; }
+
 /* User Type Cards */
 .user-type-card {
     position: relative;
@@ -528,56 +327,7 @@ include_once 'includes/header.php';
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
 
-.card-content {
-    position: relative;
-    z-index: 2;
-}
-
-/* CTA Section */
-.cta-section .bg-gradient {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.cta-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.1;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white"/><circle cx="80" cy="40" r="1.5" fill="white"/><circle cx="40" cy="80" r="1" fill="white"/><circle cx="90" cy="10" r="1" fill="white"/></svg>');
-}
-
-/* Animation Classes */
-.animate-fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 1s ease forwards;
-}
-
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-fade-in {
-    opacity: 0;
-    animation: fadeIn 1.5s ease forwards 0.5s;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.animate-on-scroll.show {
+@@ -581,57 +624,57 @@ include_once 'includes/header.php';
     opacity: 1;
     transform: translateY(0);
 }
@@ -603,9 +353,9 @@ include_once 'includes/header.php';
 
 /* Responsive */
 @media (max-width: 768px) {
-    .display-3 { font-size: 2.5rem; }
+    .display-2 { font-size: 2.5rem; }
     .display-4 { font-size: 2rem; }
-    .hero-section { min-height: 70vh; }
+    .hero-section { min-height: 100vh; }
     .floating-note { font-size: 1.5rem; }
 }
 </style>

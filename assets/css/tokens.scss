@@ -1,0 +1,67 @@
+// Design tokens: colors, typography, spacing, breakpoints
+
+// Colors
+$color-bg: #1a0e2a; // deep purple background
+$color-surface: #221134;
+$color-text: #f4f4f4;
+$color-accent-pink: #ff4dff;
+$color-accent-cyan: #00e5ff;
+
+// Typography
+$font-heading: 'Montserrat', sans-serif;
+$font-body: 'Inter', sans-serif;
+
+$font-size-100: 1rem;     // base
+$font-size-200: 1.25rem;  // scale
+$font-size-300: 1.563rem;
+$font-size-400: 1.953rem;
+$font-size-500: 2.441rem;
+
+// Spacing (4px scale)
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-8: 32px;
+
+// Breakpoints
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+:root {
+  // color variables
+  --color-bg: #{$color-bg};
+  --color-surface: #{$color-surface};
+  --color-text: #{$color-text};
+  --color-accent-pink: #{$color-accent-pink};
+  --color-accent-cyan: #{$color-accent-cyan};
+
+  // typography variables
+  --font-heading: #{$font-heading};
+  --font-body: #{$font-body};
+
+  --font-size-100: #{$font-size-100};
+  --font-size-200: #{$font-size-200};
+  --font-size-300: #{$font-size-300};
+  --font-size-400: #{$font-size-400};
+  --font-size-500: #{$font-size-500};
+
+  // spacing variables
+  --space-1: #{$space-1};
+  --space-2: #{$space-2};
+  --space-3: #{$space-3};
+  --space-4: #{$space-4};
+  --space-5: #{$space-5};
+  --space-6: #{$space-6};
+  --space-8: #{$space-8};
+
+  // breakpoint variables
+  --bp-sm: #{$bp-sm};
+  --bp-md: #{$bp-md};
+  --bp-lg: #{$bp-lg};
+  --bp-xl: #{$bp-xl};
+}

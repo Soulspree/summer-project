@@ -366,9 +366,9 @@ class Gig {
      */
     public function getUpcomingGigs($musician_id, $limit = 5) {
         try {
-            $sql = "SELECT * FROM gigs 
-                    WHERE musician_id = :musician_id 
-                    AND gig_date >= CURDATE() 
+           $sql = "SELECT * FROM gigs
+                    WHERE musician_id = :musician_id
+                    AND gig_date >= CURDATE()
                     AND gig_status IN ('scheduled', 'confirmed')
                     ORDER BY gig_date ASC, start_time ASC 
                     LIMIT :limit";
@@ -380,6 +380,35 @@ class Gig {
             
             return $stmt->fetchAll();
             
+        } catch (Exception $e) {
+            $this->setError($e->getMessage());
+            return [];
+        }
+    }
+    
+    /**
+     * Get upcoming gigs across all musicians for public display
+     *
+     * @param int $limit Number of gigs to return
+     * @return array Upcoming gigs with musician names
+     */
+    public function getPublicUpcomingGigs($limit = 5) {
+        try {
+            $sql = "SELECT g.*, COALESCE(mp.stage_name, CONCAT(u.first_name, ' ', u.last_name)) AS musician_name
+                    FROM gigs g
+                    JOIN users u ON g.musician_id = u.user_id
+                    LEFT JOIN musician_profiles mp ON g.musician_id = mp.user_id
+                    WHERE g.gig_date >= CURDATE()
+                      AND g.gig_status IN ('scheduled', 'confirmed')
+                    ORDER BY g.gig_date ASC, g.start_time ASC
+                    LIMIT :limit";
+
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
         } catch (Exception $e) {
             $this->setError($e->getMessage());
             return [];
@@ -928,11 +957,10 @@ class Gig {
     }
     
     /**
-     * Get payment terms options
-     * 
-     * @return array Payment terms options
+     * Get payment term options 
+     * @return array Payment term options
      */
-    public static function getPaymentTerms() {
+    public static function getPaymentTermOptions() {
         return [
             'full_advance' => 'Full Payment in Advance',
             '50_50' => '50% Advance, 50% After Event',

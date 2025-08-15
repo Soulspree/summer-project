@@ -1,0 +1,27 @@
+:root {
+  --color-bg: #1a0e2a;
+  --color-surface: #221134;
+  --color-text: #f4f4f4;
+  --color-accent-pink: #ff4dff;
+  --color-accent-cyan: #00e5ff;
+  --font-heading: Montserrat, sans-serif;
+  --font-body: Inter, sans-serif;
+  --font-size-100: 1rem;
+  --font-size-200: 1.25rem;
+  --font-size-300: 1.563rem;
+  --font-size-400: 1.953rem;
+  --font-size-500: 2.441rem;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --bp-sm: 576px;
+  --bp-md: 768px;
+  --bp-lg: 992px;
+  --bp-xl: 1200px;
+}
+
+/*# sourceMappingURL=tokens.css.map */

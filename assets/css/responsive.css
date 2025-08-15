@@ -1,1 +1,26 @@
  
+/* Responsive breakpoints using rem units (1rem = 16px) */
+html {
+  font-size: 100%;
+}
+
+/* Small devices: 30rem = 480px */
+@media (min-width: 30rem) {
+  html {
+    font-size: 106.25%;
+  }
+}
+
+/* Medium devices: 48rem = 768px */
+@media (min-width: 48rem) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+/* Large devices: 64rem = 1024px */
+@media (min-width: 64rem) {
+  html {
+    font-size: 118.75%;
+  }
+}

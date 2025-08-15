@@ -1,0 +1,21 @@
+/**
+ * Card component
+ */
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  &__header {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+
+  &__body {
+    padding: 1rem;
+  }
+
+  &--highlighted {
+    border-color: #007bff;
+  }
+}
