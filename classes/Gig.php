@@ -11,6 +11,8 @@
  */
 
 require_once __DIR__ . '/../config/database.php';
+// Ensure the base Database class is available for legacy usages
+require_once __DIR__ . '/Database.php'
 
 class Gig {
     
@@ -61,7 +63,7 @@ class Gig {
      */
     public function __construct($db = null) {
         if ($db === null) {
-            $this->db = Database::getInstance()->getConnection();
+             $this->db = getDB();
         } else {
             $this->db = $db;
         }

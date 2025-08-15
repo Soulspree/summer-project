@@ -157,3 +157,13 @@ Stack trace:
 #0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
 #1 {main}
   thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:15:46 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:15:47 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
