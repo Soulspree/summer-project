@@ -1,0 +1,73 @@
+[15-Aug-2025 05:38:11 Asia/Kathmandu] PHP Fatal error:  Access level to User::escapeLike() must be public (as in class Database) in C:\xampp\htdocs\musician-booking-system\classes\User.php on line 740
+[15-Aug-2025 05:55:05 Asia/Kathmandu] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\xampp\htdocs\musician-booking-system\config\config.php on line 69
+[15-Aug-2025 05:55:05 Asia/Kathmandu] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\xampp\htdocs\musician-booking-system\config\config.php on line 70
+[15-Aug-2025 05:55:05 Asia/Kathmandu] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\xampp\htdocs\musician-booking-system\config\config.php on line 71
+[15-Aug-2025 05:55:05 Asia/Kathmandu] PHP Fatal error:  Access level to User::escapeLike() must be public (as in class Database) in C:\xampp\htdocs\musician-booking-system\classes\User.php on line 740
+[15-Aug-2025 05:55:33 Asia/Kathmandu] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\xampp\htdocs\musician-booking-system\config\config.php on line 69
+[15-Aug-2025 05:55:33 Asia/Kathmandu] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\xampp\htdocs\musician-booking-system\config\config.php on line 70
+[15-Aug-2025 05:55:33 Asia/Kathmandu] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in C:\xampp\htdocs\musician-booking-system\config\config.php on line 71
+[15-Aug-2025 05:55:33 Asia/Kathmandu] PHP Fatal error:  Access level to User::escapeLike() must be public (as in class Database) in C:\xampp\htdocs\musician-booking-system\classes\User.php on line 740
+[15-Aug-2025 05:57:50 Asia/Kathmandu] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\musician-booking-system\index.php on line 15
+[15-Aug-2025 05:57:50 Asia/Kathmandu] PHP Fatal error:  Access level to User::validateRequired() must be protected (as in class Database) or weaker in C:\xampp\htdocs\musician-booking-system\classes\User.php on line 750
+[15-Aug-2025 06:00:25 Asia/Kathmandu] PHP Fatal error:  Access level to User::escapeLike() must be public (as in class Database) in C:\xampp\htdocs\musician-booking-system\classes\User.php on line 740
+[15-Aug-2025 06:00:27 Asia/Kathmandu] PHP Fatal error:  Access level to User::escapeLike() must be public (as in class Database) in C:\xampp\htdocs\musician-booking-system\classes\User.php on line 740
+[15-Aug-2025 06:01:11 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:01:11 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to undefined method Database::getConnection() in C:\xampp\htdocs\musician-booking-system\index.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\index.php on line 26
+[15-Aug-2025 06:01:12 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:01:12 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to undefined method Database::getConnection() in C:\xampp\htdocs\musician-booking-system\index.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\index.php on line 26
+[15-Aug-2025 06:03:10 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:15 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:16 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:21 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:23 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:23 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:24 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:24 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:24 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:24 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:24 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:24 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:25 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:25 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:25 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:26 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:26 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:03:47 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:26 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:27 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:27 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:27 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:27 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:27 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:28 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:28 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:28 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:28 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:28 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:28 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:28 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:29 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:40 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:04:57 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:05:01 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:07:10 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:08:07 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:08:34 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:09:28 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:09:37 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:09:50 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:09:55 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:12:18 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:12:27 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:12:27 Asia/Kathmandu] PHP Warning:  Constant SYSTEM_ACCESS already defined in C:\xampp\htdocs\musician-booking-system\pages\register.php on line 8
+[15-Aug-2025 06:12:40 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:12:48 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:12:48 Asia/Kathmandu] PHP Warning:  Constant SYSTEM_ACCESS already defined in C:\xampp\htdocs\musician-booking-system\pages\register.php on line 8
+[15-Aug-2025 06:12:51 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 06:12:51 Asia/Kathmandu] PHP Warning:  Constant SYSTEM_ACCESS already defined in C:\xampp\htdocs\musician-booking-system\pages\register.php on line 8
