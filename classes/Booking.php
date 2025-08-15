@@ -10,7 +10,7 @@
  * @since 2025
  */
 
-require_once '../config/database.php';
+require_once __DIR__ . '/../config/database.php';
 
 class Booking {
     
@@ -63,7 +63,7 @@ class Booking {
      */
     public function __construct($db = null) {
         if ($db === null) {
-            $this->db = Database::getInstance()->getConnection();
+            $this->db = getDB();
         } else {
             $this->db = $db;
         }

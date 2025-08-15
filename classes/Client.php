@@ -10,8 +10,8 @@
  * @since 2025
  */
 
-require_once 'User.php';
-require_once '../config/database.php';
+require_once __DIR__ . '/User.php';
+require_once __DIR__ . '/../config/database.php';
 
 class Client extends User {
     

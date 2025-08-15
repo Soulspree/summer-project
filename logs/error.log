@@ -71,3 +71,89 @@ Stack trace:
 [15-Aug-2025 06:12:48 Asia/Kathmandu] PHP Warning:  Constant SYSTEM_ACCESS already defined in C:\xampp\htdocs\musician-booking-system\pages\register.php on line 8
 [15-Aug-2025 06:12:51 Asia/Kathmandu] Database connection established successfully
 [15-Aug-2025 06:12:51 Asia/Kathmandu] PHP Warning:  Constant SYSTEM_ACCESS already defined in C:\xampp\htdocs\musician-booking-system\pages\register.php on line 8
+[15-Aug-2025 12:01:35 Asia/Kathmandu] PHP Warning:  require_once(../config/database.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 13
+[15-Aug-2025 12:01:35 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Failed opening required '../config/database.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:13
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(8): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 13
+[15-Aug-2025 12:08:46 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:08:47 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:08:48 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:08:49 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:36 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:37 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:38 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:38 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:39 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:39 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:39 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:39 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:39 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:39 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:39 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:13:44 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\xampp\htdocs\musician-booking-system\classes\Gig.php:64
+Stack trace:
+#0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
