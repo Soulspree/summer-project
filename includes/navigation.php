@@ -1,7 +1,7 @@
 <?php
 // Global navigation bar
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation" aria-label="Main navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-white role="navigation" aria-label="Main navigation">
     <div class="container">
         <a class="navbar-brand" href="/pages/home.php"aria-label="Home">Musician Booking</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

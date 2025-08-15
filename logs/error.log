@@ -167,3 +167,26 @@ Stack trace:
 #0 C:\xampp\htdocs\musician-booking-system\index.php(10): Gig->__construct()
 #1 {main}
   thrown in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 64
+[15-Aug-2025 12:29:52 Asia/Kathmandu] PHP Parse error:  syntax error, unexpected token "class" in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 17
+[15-Aug-2025 12:29:53 Asia/Kathmandu] PHP Parse error:  syntax error, unexpected token "class" in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 17
+[15-Aug-2025 12:29:55 Asia/Kathmandu] PHP Parse error:  syntax error, unexpected token "class" in C:\xampp\htdocs\musician-booking-system\classes\Gig.php on line 17
+[15-Aug-2025 12:36:50 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:36:56 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:37:01 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:37:01 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:37:02 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:37:03 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:37:04 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:37:05 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:41:10 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:41:16 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:47:06 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:47:07 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:47:07 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:48:04 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:48:09 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:48:10 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:48:11 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:48:12 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:48:12 Asia/Kathmandu] Database connection established successfully
+[15-Aug-2025 12:48:13 Asia/Kathmandu] Database connection established successfully

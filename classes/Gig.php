@@ -9,10 +9,10 @@
  * @version 1.0
  * @since 2025
  */
-
+if (!defined('SYSTEM_ACCESS')) {
+    define('SYSTEM_ACCESS', true);
+}
 require_once __DIR__ . '/../config/database.php';
-// Ensure the base Database class is available for legacy usages
-require_once __DIR__ . '/Database.php'
 
 class Gig {
     

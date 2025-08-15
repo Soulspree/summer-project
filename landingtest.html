@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicConnect Nepal - Book Musicians, Create Memories</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --warning-gradient: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
+            
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.15);
+            
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --text-light: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glass Morphism Effects */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-gradient {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            color: white;
+        }
+
+        .btn-secondary-gradient {
+            background: var(--secondary-gradient);
+        }
+
+        .btn-accent-gradient {
+            background: var(--accent-gradient);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons .btn {
+            margin: 0 1rem;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Search Section */
+        .search-section {
+            margin: 4rem 0;
+        }
+
+        .search-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-50px);
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .form-floating {
+            position: relative;
+        }
+
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 6rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            height: 100%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        /* Musician Cards */
+        .musician-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .musician-card {
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .musician-image {
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .musician-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.3"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.2"/><circle cx="40" cy="70" r="1" fill="white" opacity="0.4"/></svg>');
+        }
+
+        .musician-avatar {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #667eea;
+            box-shadow: var(--shadow);
+        }
+
+        .musician-info {
+            padding: 2rem;
+            text-align: center;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .musician-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .musician-genre {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .musician-rating {
+            color: #ffc107;
+            margin-bottom: 1rem;
+        }
+
+        .musician-price {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        /* Dashboard Sections */
+        .dashboard-section {
+            padding: 2rem 0;
+        }
+
+        .dashboard-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .dashboard-nav .nav-pills .nav-link {
+            color: var(--text-secondary);
+            border-radius: 15px;
+            margin: 0 0.25rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-nav .nav-pills .nav-link.active {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            color: rgba(102, 126, 234, 0.3);
+        }
+
+        /* Calendar */
+        .calendar-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f8f9fa;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .calendar-day {
+            background: white;
+            padding: 1rem;
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .calendar-day:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .calendar-day.available {
+            background: rgba(56, 239, 125, 0.1);
+            color: #11998e;
+        }
+
+        .calendar-day.booked {
+            background: rgba(245, 87, 108, 0.1);
+            color: #f5576c;
+        }
+
+        .calendar-day.today {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        /* Booking Form */
+        .booking-form {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+            font-weight: 600;
+            position: relative;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .step.active {
+            background: var(--primary-gradient);
+            color: white;
+            transform: scale(1.2);
+        }
+
+        .step.completed {
+            background: var(--success-gradient);
+            color: white;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2rem;
+            height: 2px;
+            background: #e9ecef;
+        }
+
+        .step.completed:not(:last-child)::after {
+            background: var(--success-gradient);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .search-form {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .hero-buttons .btn {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .musician-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-hover);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Loading States */
+        .loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Success/Error States */
+        .alert-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: none;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Chat/Messaging */
+        .chat-container {
+            height: 400px;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            max-width: 70%;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .message.sent {
+            background: var(--primary-gradient);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message.received {
+            background: white;
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-music me-2"></i>MusicConnect Nepal
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#musicians">Find Musicians</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex">
+                    <button class="btn btn-outline-light me-2" onclick="showLogin()">Login</button>
+                    <button class="btn btn-gradient" onclick="showRegister()">Join Now</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Find Perfect Musicians for Your Events</h1>
+            <p>Connect with talented artists across Nepal. Book musicians, manage gigs, and create unforgettable experiences.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-gradient btn-lg me-3" onclick="showSection('client-dashboard')">
+                    <i class="fas fa-search me-2"></i>Find Musicians
+                </button>
+                <button class="btn btn-secondary-gradient btn-lg" onclick="showSection('musician-dashboard')">
+                    <i class="fas fa-microphone me-2"></i>Join as Musician
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-card glass-card">
+                <h2 class="text-center mb-4">Find Your Perfect Musician</h2>
+                <form class="search-form">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="location" placeholder="Kathmandu">
+                        <label for="location"><i class="fas fa-map-marker-alt me-2"></i>Location</label>
+                    </div>
+                    <div class="form-floating">
+                        <select class="form-control" id="genre">
+                            <option value="">All Genres</option>
+                            <option value="folk">Nepali Folk</option>
+                            <option value="classical">Classical</option>
+                            <option value="rock">Rock</option>
+                            <option value="pop">Pop</option>
+                            <option value="jazz">Jazz</option>
+                        </select>
+                        <label for="genre"><i class="fas fa-music me-2"></i>Genre</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="date" class="form-control" id="event-date">
+                        <label for="event-date"><i class="fas fa-calendar me-2"></i>Event Date</label>
+                    </div>
+                    <button type="submit" class="btn btn-gradient btn-lg pulse">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="how-it-works" class="features-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-white display-4 mb-4">How MusicConnect Works</h2>
+                <p class="text-white-50 lead">Simple steps to connect musicians with amazing opportunities</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="feature-card glass">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h4 class="mb-3">Create Profile</h4>
+                        <p>Musicians showcase their talents, experience, and availability. Clients create profiles to book events.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="feature-card glass">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4 class="mb-3">Discover & Connect</h4>
+                        <p>Advanced search filters help find perfect matches. Direct messaging and booking requests made easy.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="feature-card glass">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4 class="mb-3">Book & Manage</h4>
+                        <p>Secure booking system with payment tracking, calendar integration, and professional gig management.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Musicians -->
+    <section id="musicians" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-white display-4 mb-4">Featured Musicians</h2>
+                <p class="text-white-50 lead">Discover talented artists ready for your next event</p>
+            </div>
+            
+            <div class="musician-grid">
+                <div class="musician-card glass-card">
+                    <div class="musician-image">
+                        <div class="musician-avatar">
+                            <i class="fas fa-guitar"></i>
+                        </div>
+                    </div>
+                    <div class="musician-info">
+                        <div class="musician-name">Rajesh Hamal</div>
+                        <div class="musician-genre">Folk • Classical</div>
+                        <div class="musician-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            4.9 (127 reviews)
+                        </div>
+                        <div class="musician-price">Rs. 15,000 / event</div>
+                    </div>
+                </div>
+                
+                <div class="musician-card glass-card">
+                    <div class="musician-image">
+                        <div class="musician-avatar">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                    </div>
+                    <div class="musician-info">
+                        <div class="musician-name">Priya Sharma</div>
+                        <div class="musician-genre">Pop • Rock</div>
+                        <div class="musician-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            4.8 (89 reviews)
+                        </div>
+                        <div class="musician-price">Rs. 20,000 / event</div>
+                    </div>
+                </div>
+                
+                <div class="musician-card glass-card">
+                    <div class="musician-image">
+                        <div class="musician-avatar">
+                            <i class="fas fa-drum"></i>
+                        </div>
+                    </div>
+                    <div class="musician-info">
+                        <div class="musician-name">The Himalayan Band</div>
+                        <div class="musician-genre">Traditional • Fusion</div>
+                        <div class="musician-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            5.0 (203 reviews)
+                        </div>
+                        <div class="musician-price">Rs. 35,000 / event</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Sections (Hidden by default) -->
+    
+    <!-- Musician Dashboard -->
+    <section id="musician-dashboard" class="dashboard-section" style="display: none;">
+        <div class="container">
+            <div class="dashboard-nav">
+                <ul class="nav nav-pills justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="pill" href="#musician-overview">
+                            <i class="fas fa-tachometer-alt me-2"></i>Overview
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="pill" href="#musician-gigs">
+                            <i class="fas fa-calendar me-2"></i>Gigs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="pill" href="#musician-bookings">
+                            <i class="fas fa-handshake me-2"></i>Bookings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="pill" href="#
